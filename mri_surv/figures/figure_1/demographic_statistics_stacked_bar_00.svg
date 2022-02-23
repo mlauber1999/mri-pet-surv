@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with matplotlib (https://matplotlib.org/) -->
+<svg height="460.8pt" version="1.1" viewBox="0 0 576 460.8" width="576pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2022-02-13T16:43:09.892964</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.3.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linecap:butt;stroke-linejoin:round;}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 460.8 
+L 576 460.8 
+L 576 0 
+L 0 0 
+z
+" style="fill:#ffffff;"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 103.66 366.607685 
+L 565.2 366.607685 
+L 565.2 10.8 
+L 103.66 10.8 
+z
+" style="fill:#ffffff;"/>
+   </g>
+   <g id="patch_3">
+    <path clip-path="url(#p651295c0de)" d="M 161.3525 366.607685 
+L 219.045 366.607685 
+L 219.045 95.067288 
+L 161.3525 95.067288 
+z
+" style="fill:#ff7f0e;"/>
+   </g>
+   <g id="patch_4">
+    <path clip-path="url(#p651295c0de)" d="M 392.1225 366.607685 
+L 449.815 366.607685 
+L 449.815 27.743223 
+L 392.1225 27.743223 
+z
+" style="fill:#ff7f0e;"/>
+   </g>
+   <g id="patch_5">
+    <path clip-path="url(#p651295c0de)" d="M 219.045 366.607685 
+L 276.7375 366.607685 
+L 276.7375 72.219515 
+L 219.045 72.219515 
+z
+" style="fill:#2ca02c;"/>
+   </g>
+   <g id="patch_6">
+    <path clip-path="url(#p651295c0de)" d="M 449.815 366.607685 
+L 507.5075 366.607685 
+L 507.5075 50.590996 
+L 449.815 50.590996 
+z
+" style="fill:#2ca02c;"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path d="M 0 0 
+L 0 3.5 
+" id="mae0998687f" style="stroke:#000000;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="219.045" xlink:href="#mae0998687f" y="366.607685"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;" transform="translate(206.294097 390.800986)rotate(-315)">F</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="449.815" xlink:href="#mae0998687f" y="366.607685"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;" transform="translate(433.809638 390.800986)rotate(-315)">M</text>
+     </g>
+    </g>
+    <g id="text_3">
+     <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:middle;" transform="rotate(-0, 334.43, 443.345)" x="334.43" y="443.345">Sex</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path d="M 0 0 
+L -3.5 0 
+" id="meda2c80d61" style="stroke:#000000;stroke-width:0.8;"/>
+      </defs>
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="103.66" xlink:href="#meda2c80d61" y="366.607685"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:end;" transform="rotate(-0, 96.66, 378.765185)" x="96.66" y="378.765185">0.0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="103.66" xlink:href="#meda2c80d61" y="244.526713"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:end;" transform="rotate(-0, 96.66, 256.684213)" x="96.66" y="256.684213">0.2</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use style="stroke:#000000;stroke-width:0.8;" x="103.66" xlink:href="#meda2c80d61" y="122.445742"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:end;" transform="rotate(-0, 96.66, 134.603242)" x="96.66" y="134.603242">0.4</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-family:DejaVu Sans;font-size:32px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:middle;" transform="rotate(-90, 35.115, 188.703842)" x="35.115" y="188.703842">Proportion</text>
+    </g>
+   </g>
+   <g id="legend_1">
+    <g id="patch_7">
+     <path d="M 404.13 100.455 
+L 548.4 100.455 
+Q 553.2 100.455 553.2 95.655 
+L 553.2 27.6 
+Q 553.2 22.8 548.4 22.8 
+L 404.13 22.8 
+Q 399.33 22.8 399.33 27.6 
+L 399.33 95.655 
+Q 399.33 100.455 404.13 100.455 
+z
+" style="fill:#ffffff;opacity:0.8;stroke:#cccccc;stroke-linejoin:miter;"/>
+    </g>
+    <g id="patch_8">
+     <path d="M 408.93 50.63625 
+L 456.93 50.63625 
+L 456.93 33.83625 
+L 408.93 33.83625 
+z
+" style="fill:#ff7f0e;"/>
+    </g>
+    <g id="text_8">
+     <text style="font-family:DejaVu Sans;font-size:24px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 476.13, 50.63625)" x="476.13" y="50.63625">ADNI</text>
+    </g>
+    <g id="patch_9">
+     <path d="M 408.93 85.86375 
+L 456.93 85.86375 
+L 456.93 69.06375 
+L 408.93 69.06375 
+z
+" style="fill:#2ca02c;"/>
+    </g>
+    <g id="text_9">
+     <text style="font-family:DejaVu Sans;font-size:24px;font-stretch:normal;font-style:normal;font-weight:normal;text-anchor:start;" transform="rotate(-0, 476.13, 85.86375)" x="476.13" y="85.86375">NACC</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p651295c0de">
+   <rect height="355.807685" width="461.54" x="103.66" y="10.8"/>
+  </clipPath>
+ </defs>
+</svg>

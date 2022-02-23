@@ -1,0 +1,23 @@
+{
+    "G_lr": 0.00005,
+    "G_pth": "",
+    "G_fil_num": 10,
+    "warm_G_epoch": 0,
+    "D_lr": 0.00005,
+    "D_lr_sg": 0.0002,
+    "D_pth": "",
+    "D_fil_num": 17,
+    "warm_D_epoch": 0,
+    "epochs": 8001,
+    "Data_dir": "/data2/MRI_PET_DATA/processed_images_spm/background_stripped_2/",
+    "L1_norm_factor": 0.1,
+    "AD_factor": 0.1,
+    "batch_size_p": 10,
+    "checkpoint_dir": "./checkpoint_dir/fcn_gan/",
+    "drop_rate": 0.725430,
+    "balanced": 0,
+    "log_name": "fcn_gan_log.txt",
+    "iqa_name": "iqa.txt",
+    "save_every_epoch": 6,
+    "D_G_ratio": 5
+}

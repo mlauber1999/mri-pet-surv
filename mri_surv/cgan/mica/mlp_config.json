@@ -1,0 +1,15 @@
+{
+    "mlp": {
+        "fil_num":              100,
+        "drop_rate":            0.5,
+        "batch_size":           8,
+        "balanced":             0,
+        "roi_threshold":        0.6,
+        "roi_count":            200,
+        "choice":               "count",
+        "metric":               "weighted avg",
+        "learning_rate":        0.01,
+        "yr":                   1,
+        "train_epochs":         300
+    }
+}

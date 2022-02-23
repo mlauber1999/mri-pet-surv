@@ -1,0 +1,80 @@
+{
+    "cnn": {
+        "fil_num":              20,
+        "drop_rate":            0.137,
+        "batch_size":           2,
+        "balanced":             1,
+        "Data_dir":             "/data2/MRI_PET_DATA/processed_images_final_cumulative/brain_stripped_cumulative/",
+        "learning_rate":        0.00001,
+        "train_epochs":         10
+    },
+    "standard": {
+        "fil_num":              20,
+        "drop_rate":            0.5,
+        "batch_size":           16,
+        "balanced":             0,
+        "Data_dir":             "/data/datasets/ADNI_NoBack/",
+        "learning_rate":        0.0001,
+        "train_epochs":         200
+    },
+    "fcn": {
+        "fil_num":              20,
+        "drop_rate":            0.5,
+        "patch_size":           47,
+        "batch_size":           10,
+        "balanced":             1,
+        "yr":                   1,
+        "metric":               "weighted avg",
+        "Data_dir":             "/data2/MRI_PET_DATA/processed_images_final_cumulative/brain_stripped_cumulative/",
+        "learning_rate":        0.0001,
+        "train_epochs":         1602,
+        "input_dim":            1
+    },
+    "fcn_test": {
+        "fil_num":              20,
+        "drop_rate":            0.5,
+        "patch_size":           47,
+        "batch_size":           10,
+        "balanced":             1,
+        "Data_dir":             "/data2/MRI_PET_DATA/processed_images_final_cumulative/brain_stripped_cumulative/",
+        "yr":                   2,
+        "learning_rate":        0.0001,
+        "train_epochs":         501,
+        "input_dim":            1
+    },
+    "fcn_dual": {
+        "fil_num":              20,
+        "drop_rate":            0.5,
+        "patch_size":           47,
+        "batch_size":           10,
+        "balanced":             1,
+        "Data_dir":             ["/data2/MRI_PET_DATA/processed_images_final/brain_stripped/", "/data2/MRI_PET_DATA/processed_images_final/brain_stripped/"],
+        "learning_rate":        0.0001,
+        "train_epochs":         1001,
+        "input_dim":            2
+    },
+    "fcn_tri": {
+        "fil_num":              20,
+        "drop_rate":            0.5,
+        "patch_size":           47,
+        "batch_size":           10,
+        "balanced":             1,
+        "Data_dir":             ["/data2/MRI_PET_DATA/processed_images_final/brain_stripped/", "/data2/MRI_PET_DATA/processed_images_final/brain_stripped/", "/data2/MRI_PET_DATA/processed_images_spm/brain_stripped/"],
+        "learning_rate":        0.0001,
+        "train_epochs":         1001,
+        "input_dim":            3
+    },
+    "mlp": {
+        "fil_num":              100,
+        "drop_rate":            0.5,
+        "batch_size":           8,
+        "balanced":             0,
+        "roi_threshold":        0.6,
+        "roi_count":            200,
+        "choice":               "count",
+        "metric":               "weighted avg",
+        "learning_rate":        0.01,
+        "yr":                   1,
+        "train_epochs":         300
+    }
+}

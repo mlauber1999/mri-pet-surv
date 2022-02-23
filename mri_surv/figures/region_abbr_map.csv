@@ -1,0 +1,73 @@
+ROIabbr,ROIname
+BG,Background
+3thVen,3rd Ventricle
+4thVen,4th Ventricle
+Acc,Accumbens
+Amy,Amygdala
+Bst,Brainstem
+Cau,Caudate
+ExtCbe,Cerebellum Exterior
+CbeWM,Cerebellum White Matter
+CbrWM,Cerebral White Matter
+CSF,CSF
+Hip,Hippocampus
+InfLatVen,Inferior Lateral Ventricle
+LatVen,Lateral Ventricle
+Pal,Pallidum
+Put,Putamen
+ThaPro,Thalamus Proper
+VenVen,Ventral DC
+OC,Optic Chiasm
+CbeLoCbe1-5,Cerebellar Vermal Lobules I-V
+CbeLoCbe6-7,Cerebellar Vermal Lobules VI-VII
+CbeLoCbe8-10,Cerebellar Vermal Lobules VIII-X
+BasCbr+FobBr,Basal Forebrain
+AntCinGy,Anterior Cingulate Gyrus
+AntIns,Anterior Insula
+AntOrbGy,Anterior Orbital Gyrus
+AngGy,Angular Gyrus
+Cal+Cbr,Calcarine Cortex
+CenOpe,Central Operculum
+Cun,Cuneus
+Ent,Entorhinal Area
+FroOpe,Frontal Operculum
+FroPo,Frontal Pole
+FusGy,Fusiform Gyrus
+RecGy,Gyrus Rectus
+InfOccGy,Inferior Occipital Gyrus
+InfTemGy,Inferior Temporal Gyrus
+LinGy,Lingual Gyrus
+LatOrbGy,Lateral Orbital Gyrus
+MidCinGy,Middle Cingulate Gyrus
+MedFroCbr,Medial Frontal Cortex
+MidFroGy,Middle Frontal Gyrus
+MidOccGy,Middle Occipital Gyrus
+MedOrbGy,Medial Orbital Gyrus
+MedPoCGy,Postcentral Gyrus Medial Segment
+MedPrcGy,Precentral Gyrus Medial Segment
+SupMedFroGy,Superior Frontal Gyrus Medial Segment
+MidTemGy,Middle Temporal Gyrus
+OccPo,Occipital Pole
+OccFusGy,Occipital Fusiform Gyrus
+InfFroGy,Opercular Part of the Inferior Frontal Gyrus
+InfFroOrbGy,Orbital Part of the Inferior Frontal Gyrus
+PosCinGy,Posterior Cingulate Gyrus
+PCu,Precuneus
+ParHipGy,Parahippocampus Gyrus
+PosIns,Posterior Insula
+ParOpe,Parietal Operculum
+PoCGy,Postcentral Gyrus
+PosOrbGy,Posterior Orbital Gyrus
+Pla,Planum Polare
+PrcGy,Precentral Gyrus
+Tem,Planum Temporale
+SCA,Subcallosal Area
+SupFroGy,Superior Frontal Gyrus
+Cbr+Mot,Supplementary Motor Cortex
+SupMarGy,Supramarginal Gyrus
+SupOccGy,Superior Occipital Gyrus
+SupParLo,Superior Parietal Lobule
+SupTemGy,Superior Temporal Gyrus
+TemPo,Temporal Pole
+InfFroAngGy,Triangular Part of the Inferior Frontal Gyrus
+TemTraGy,Transverse Temporal Gyrus

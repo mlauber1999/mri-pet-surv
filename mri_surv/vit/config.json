@@ -1,0 +1,37 @@
+{
+  "vit":{
+    "metric1":               "Standard",
+    "metric":               "Surv",
+    "data_dir":             "/data2/MRI_PET_DATA/processed_images_final_cox_noqc/brain_stripped_cox_noqc/",
+    "Data_dir2":             "/data2/MRI_PET_DATA/processed_images_final_cox_noqc/brain_stripped_rigid_cox_noqc/",
+    "batch_size":           5,
+    "train_epochs":         1000,
+    "lr":                   0.01,
+    "dropout":              0.25,
+    "emsize":               300,
+    "nhead":                6,
+    "dim_feedforward":      100,
+    "nlayers":              4,
+    "out_dim":              3,
+    "seq_len":              2,
+    "patch_size":           [64, 64, 64],
+    "mapping":              "Linear"
+  },
+  "pre":{
+    "metric":               "Standard",
+    "data_dir":             "/data2/MRI_PET_DATA/processed_images_final_cox_noqc/brain_stripped_cox_noqc/",
+    "Data_dir2":             "/data2/MRI_PET_DATA/processed_images_final_cox_noqc/brain_stripped_rigid_cox_noqc/",
+    "batch_size":           5,
+    "train_epochs":         20,
+    "lr":                   0.005,
+    "dropout":              0.25,
+    "emsize":               200,
+    "nhead":                4,
+    "dim_feedforward":      100,
+    "nlayers":              4,
+    "out_dim":              2,
+    "seq_len":              2,
+    "patch_size":           [64, 64, 64],
+    "mapping":              "Linear"
+  }
+}

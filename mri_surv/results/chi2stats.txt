@@ -1,0 +1,86 @@
+-  ----------------------  ----------  --------  --  -------------------------
+0  Subtype 0_vs_Subtype 1    1         1         18  CorticalAtrophy
+1  Subtype 0_vs_Subtype 2    0.833333  1         23  CorticalAtrophy
+2  Subtype 0_vs_Subtype 3    1.33333   1         19  CorticalAtrophy
+3  Subtype 1_vs_Subtype 2    0.833333  1         17  CorticalAtrophy
+4  Subtype 1_vs_Subtype 3    1.33333   1         13  CorticalAtrophy
+5  Subtype 2_vs_Subtype 3    1.6       1         18  CorticalAtrophy
+0  Subtype 0_vs_Subtype 1    0.714286  1         16  HippocampalAtrophy
+1  Subtype 0_vs_Subtype 2    1.66667   1         22  HippocampalAtrophy
+2  Subtype 0_vs_Subtype 3    2.85714   1         17  HippocampalAtrophy
+3  Subtype 1_vs_Subtype 2    2.33333   1         14  HippocampalAtrophy
+4  Subtype 1_vs_Subtype 3    4         1          9  HippocampalAtrophy
+5  Subtype 2_vs_Subtype 3    1.71429   1         15  HippocampalAtrophy
+0  Subtype 0_vs_Subtype 1    3.2       1         19  LobarAtrophy
+1  Subtype 0_vs_Subtype 2    1.92      1         24  LobarAtrophy
+2  Subtype 0_vs_Subtype 3    1.28      1         22  LobarAtrophy
+3  Subtype 1_vs_Subtype 2    0.6       1         17  LobarAtrophy
+4  Subtype 1_vs_Subtype 3    0.4       1         15  LobarAtrophy
+5  Subtype 2_vs_Subtype 3    0.666667  1         20  LobarAtrophy
+0  Subtype 0_vs_Subtype 1    0.75      1         26  BRAAK
+1  Subtype 0_vs_Subtype 2    0.571429  1         28  BRAAK
+2  Subtype 0_vs_Subtype 3    0.428571  1         26  BRAAK
+3  Subtype 1_vs_Subtype 2    0.761905  1         20  BRAAK
+4  Subtype 1_vs_Subtype 3    0.571429  1         18  BRAAK
+5  Subtype 2_vs_Subtype 3    0.75      1         20  BRAAK
+0  Subtype 0_vs_Subtype 1  inf         1         20  NIA_ADNC
+1  Subtype 0_vs_Subtype 2    0.166667  0.206593  24  NIA_ADNC
+2  Subtype 0_vs_Subtype 3    0.208333  0.242459  23  NIA_ADNC
+3  Subtype 1_vs_Subtype 2    0         0.206593  16  NIA_ADNC
+4  Subtype 1_vs_Subtype 3    0         0.206593  15  NIA_ADNC
+5  Subtype 2_vs_Subtype 3    1.25      1         19  NIA_ADNC
+0  Subtype 0_vs_Subtype 1    0.615385  0.793613  26  CERAD
+1  Subtype 0_vs_Subtype 2    0.307692  0.657416  27  CERAD
+2  Subtype 0_vs_Subtype 3    0.246154  0.657416  26  CERAD
+3  Subtype 1_vs_Subtype 2    0.5       0.793613  19  CERAD
+4  Subtype 1_vs_Subtype 3    0.4       0.793613  18  CERAD
+5  Subtype 2_vs_Subtype 3    0.8       1         19  CERAD
+0  Subtype 0_vs_Subtype 1    0.375     0.765611  15  TDP_Amygdala
+1  Subtype 0_vs_Subtype 2    0         0.54902   18  TDP_Amygdala
+2  Subtype 0_vs_Subtype 3    0.5       0.765611  18  TDP_Amygdala
+3  Subtype 1_vs_Subtype 2    0         0.765611  13  TDP_Amygdala
+4  Subtype 1_vs_Subtype 3    1.33333   1         13  TDP_Amygdala
+5  Subtype 2_vs_Subtype 3  inf         0.765611  16  TDP_Amygdala
+0  Subtype 0_vs_Subtype 1    0.3       0.881868  16  TDP_Hippocampus
+1  Subtype 0_vs_Subtype 2    0         0.54902   18  TDP_Hippocampus
+2  Subtype 0_vs_Subtype 3    0.214286  0.857143  18  TDP_Hippocampus
+3  Subtype 1_vs_Subtype 2    0         0.857143  14  TDP_Hippocampus
+4  Subtype 1_vs_Subtype 3    0.714286  1         14  TDP_Hippocampus
+5  Subtype 2_vs_Subtype 3  inf         1         16  TDP_Hippocampus
+0  Subtype 0_vs_Subtype 1    0.5       1         14  TDP_EntorhinalInfTemporal
+1  Subtype 0_vs_Subtype 2    0         1         17  TDP_EntorhinalInfTemporal
+2  Subtype 0_vs_Subtype 3    0.285714  1         17  TDP_EntorhinalInfTemporal
+3  Subtype 1_vs_Subtype 2    0         1         13  TDP_EntorhinalInfTemporal
+4  Subtype 1_vs_Subtype 3    0.571429  1         13  TDP_EntorhinalInfTemporal
+5  Subtype 2_vs_Subtype 3  inf         1         16  TDP_EntorhinalInfTemporal
+0  Subtype 0_vs_Subtype 1    0         1         14  TDP_Neocortex
+1  Subtype 0_vs_Subtype 2    0         1         16  TDP_Neocortex
+2  Subtype 0_vs_Subtype 3    0         1         14  TDP_Neocortex
+3  Subtype 1_vs_Subtype 2  nan         1         14  TDP_Neocortex
+4  Subtype 1_vs_Subtype 3  nan         1         12  TDP_Neocortex
+5  Subtype 2_vs_Subtype 3  nan         1         14  TDP_Neocortex
+-  ----------------------  ----------  --------  --  -------------------------
+
+
+
+
+
+
+
+
+
+Differences in Survival:
+-------------------------  -------  --------  -  --
+CorticalAtrophy            1.23716  0.744106  3  36
+HippocampalAtrophy         1.66513  0.644715  3  31
+LobarAtrophy               2.4147   0.490904  3  39
+BRAAK                      2.86999  0.412108  3  46
+NIA_ADNC                   2.99436  0.392496  3  39
+CERAD_SemiQuant            2.8695   0.412186  3  45
+CERAD                      2.8695   0.412186  3  45
+HippocampalSclerosis       2.78431  0.42609   3  40
+TDP_Amygdala               3.04364  0.384946  3  31
+TDP_Hippocampus            2.41778  0.490334  3  32
+TDP_EntorhinalInfTemporal  2.63158  0.45198   3  30
+TDP_Neocortex              3.13704  0.370976  3  28
+-------------------------  -------  --------  -  --
