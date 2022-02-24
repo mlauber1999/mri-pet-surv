@@ -18,16 +18,16 @@ cd mri-surv/mri_surv
 conda activate $ENVIRONMENT_NAME
 ```
 
-##Please note, metadata generation instructions as below will only run if you have the raw data from NACC and ADNI in the correct folders. To obtain this data, please contact ADNI/NACC administrators and apply for data
+## Please note, metadata generation instructions as below will only run if you have the raw data from NACC and ADNI in the correct folders. To obtain this data, please contact ADNI/NACC administrators and apply for data
 We utilized the following data time stamps:
 - For NACC: A 12042020 timestamp
 - For ADNI:
--- We used a registry with a most recently updated time stamp of 2020-04-09
--- The most recent MRI3 datasheet update is 2020-04-04
--- The most recent Demographics datasheet update is 2020-09-09
--- The most recent DX summary sheet update is 2020-04-08
--- The most recent MMSE sheet update is 2020-04-01
--- CSF datasheets used were: UPENNBIOMK10_07_29_19.csv, UPENNBIOMK9_04_19_17.csv
+  - We used a registry with a most recently updated time stamp of 2020-04-09
+  - The most recent MRI3 datasheet update is 2020-04-04
+  - The most recent Demographics datasheet update is 2020-09-09
+  - The most recent DX summary sheet update is 2020-04-08
+  - The most recent MMSE sheet update is 2020-04-01
+  - CSF datasheets used were: UPENNBIOMK10_07_29_19.csv, UPENNBIOMK9_04_19_17.csv
 
 With these files in metadata/data_raw/ADNI/, in order to generate the initial metadata sheet, please run:
 `python main.py --makecsv 1`
