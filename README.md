@@ -18,13 +18,23 @@ cd mri-surv/mri_surv
 conda activate $ENVIRONMENT_NAME
 ```
 
-**Please note, metadata generation instructions as below will only run if you have the raw data from NACC and ADNI in the correct folders. To obtain this data, please contact us or the ADNI/NACC administrators**
-In order to generate the initial metadata sheet, please run:
+##Please note, metadata generation instructions as below will only run if you have the raw data from NACC and ADNI in the correct folders. To obtain this data, please contact ADNI/NACC administrators and apply for data
+We utilized the following data time stamps:
+- For NACC: A 12042020 timestamp
+- For ADNI:
+-- We used a registry with a most recently updated time stamp of 2020-04-09
+-- The most recent MRI3 datasheet update is 2020-04-04
+-- The most recent Demographics datasheet update is 2020-09-09
+-- The most recent DX summary sheet update is 2020-04-08
+-- The most recent MMSE sheet update is 2020-04-01
+-- CSF datasheets used were: UPENNBIOMK10_07_29_19.csv, UPENNBIOMK9_04_19_17.csv
+
+With these files in metadata/data_raw/ADNI/, in order to generate the initial metadata sheet, please run:
 `python main.py --makecsv 1`
 
-The flag to run this on NACC is `--test 1`, so: `python main.py --makecsv 1 --test 1`
+The flag to run this on NACC is `--test 1`, so: `python main.py --makecsv 1 --test 1`. Note: NACC metadata files must be in the respective NACC folder.
 
-In order to consolidate images and prune your data based on available ADNI images, (images are presumed to be located in a base directory at /data2/MRI_PET_DATA/raw_images/), please run `python main.py --extractimg`, with or without `--moveraw 1` (this will relocate the raw images to a different directory under /data2/MRI_PET_DATA/).
+In order to consolidate images and prune your data based on available ADNI images, (images are presumed to be located in a base directory at /data2/MRI_PET_DATA/raw_images/ having been unzipped), please run `python main.py --extractimg`, with or without `--moveraw 1` (this will relocate the raw images to a different directory under /data2/MRI_PET_DATA/).
 
 Adding the flag `--process_image 1` will process the images in Matlab (we used version 2020, as noted in our paper, after downloading SPM12 and CAT12).
 
@@ -65,8 +75,6 @@ In order to generate the data used for AD, please run in the python console:
 >>> pimd =  ProcessImagesMRIAD()
 >>> pimd()
 ```
-
-## At this point, you will be able to run code from this directory. Please note that for the CNN and ViT, you will need checkpoint data in order to evaluate external data, and Nifti files in the correct directories to generate the checkpoint files. Please contact us for the pre-processed Nifti files if this is of interest to you**
 ## Next, run code for the MLP
 For the MLP, please run the following code after activating the environment environment_torch.yml, inside the python console:
 ```
