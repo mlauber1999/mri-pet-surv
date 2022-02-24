@@ -15,9 +15,10 @@ next, run from the commandline:
 ```
 git clone https://github.com/vkola-lab/mri-surv
 cd mri-surv/mri_surv
-conda activate $REQUIREMENTS.YML_ENVIRONMENT_NAME
+conda activate $ENVIRONMENT_NAME
 ```
 
+**Please note, metadata generation instructions as below will only run if you have the raw data from NACC and ADNI in the correct folders. To obtain this data, please contact us or the ADNI/NACC administrators**
 In order to generate the initial metadata sheet, please run:
 `python main.py --makecsv 1`
 
@@ -29,11 +30,11 @@ Adding the flag `--process_image 1` will process the images in Matlab (we used v
 
 In order to generate the data used for pre-training, please run, from the mri_surv directory:
 ```
-from main import create_csv_time_unused, consolidate_dummy_data, ProcessImagesMRIDummy
-create_csv_time_unused()
-consolidate_dummy_data()
-pimd = ProcessImagesMRIDummy()
-pimd()
+>>> from main import create_csv_time_unused, consolidate_dummy_data, ProcessImagesMRIDummy
+>>> create_csv_time_unused()
+>>> consolidate_dummy_data()
+>>> pimd = ProcessImagesMRIDummy()
+>>> pimd()
 ```
 
 In order to generate the data used for AD, please run:
@@ -48,8 +49,29 @@ pimd()
 ## Next, run code for the MLP
 For the MLP, please run the following code after activating the environment environment_torch.yml.
 ```
-from simple_mlps.mlp_wrappers import main
-main()
+>>> main()
+>>> from main import create_csv_time_unused, consolidate_dummy_data, ProcessImagesMRIDummy
+>>> create_csv_time_unused()
+>>> consolidate_dummy_data()
+>>> pimd = ProcessImagesMRIDummy()
+>>> pimd()
+```
+
+In order to generate the data used for AD, please run in the python console:
+```
+>>> from main import consolidate_images_ad, create_csv_time,  ProcessImagesMRIAD
+>>> create_csv_time()
+>>> consolidate_images_ad()
+>>> pimd =  ProcessImagesMRIAD()
+>>> pimd()
+```
+
+## At this point, you will be able to run code from this directory. Please note that for the CNN and ViT, you will need checkpoint data in order to evaluate external data, and Nifti files in the correct directories to generate the checkpoint files. Please contact us for the pre-processed Nifti files if this is of interest to you**
+## Next, run code for the MLP
+For the MLP, please run the following code after activating the environment environment_torch.yml, inside the python console:
+```
+>>> from simple_mlps.mlp_wrappers import main
+>>> main()
 ```
 
 ## Run the final code for the CNN and ViT
