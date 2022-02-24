@@ -12,4 +12,6 @@ mri_surv/vit/checkpoint_dir/*
 mri_surv/metadata/data_raw/ADNI/*
 mri_surv/metadata/data_raw/NACC/*
 mri_surv/metadata/data_raw/OASIS/*
+mri_surv/metadata/data_raw/neuromorphometrics/*
 mri_surv/metadata/data_raw/aibl_metadata/*
+mri_surv/metadata/data_processed/*
