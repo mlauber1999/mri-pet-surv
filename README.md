@@ -46,7 +46,7 @@ In order to generate the data used for AD, please run in the python console:
 >>> pimd()
 ```
 
-**At this point, you will be able to run code from this directory. Please note that for the CNN and ViT, you will need checkpoint data in order to evaluate external data, and Nifti files in the correct directories to generate the checkpoint files. Please contact us for the pre-processed Nifti files if this is of interest to you**
+## At this point, you will be able to run code from this directory. Please note that for the CNN and ViT, you will need checkpoint data in order to evaluate external data, and Nifti files in the correct directories to generate the checkpoint files. Please contact us for the pre-processed Nifti files if this is of interest to you**
 ## Next, run code for the MLP
 For the MLP, please run the following code after activating the environment environment_torch.yml, inside the python console:
 ```
