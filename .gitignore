@@ -8,6 +8,7 @@ __pycache__
 *.log
 .vscode
 .Rproj.user
+mri_surv/tests/*.csv
 mri_surv/vit/checkpoint_dir/*
 mri_surv/metadata/data_raw/ADNI/*
 mri_surv/metadata/data_raw/NACC/*
