@@ -66,18 +66,19 @@ def consolidate_images_nacc(move=True):
 
 class ProcessImagesMRI(object):
     def __init__(self, suffix='cox_noqc'):
-        self.prefix = 'matlab -nodisplay -r \"addpath(genpath(\'.\'));'
-        self.prefix += "addpath(genpath(\'/usr/local/spm\'));"
+        self.prefix = 'matlab -nodisplay -r \"addpath(genpath(\'.\'));' #how you run matlab from CL 
+        # -no display tells it not to launch gui, -r allows you to pass command 
+        self.prefix += "addpath(genpath(\'/usr/local/spm\'));" #concatenate local pathname and add spm to end 
         self.suffix = suffix
         self.basedir = '/data2/MRI_PET_DATA/processed_images_final_{}/'.format(
-            self.suffix)
+            self.suffix) #directory of processed images 
         self.realign = self.prefix + "realign_all_niftis(\'{}\'," \
                                      "\'_{}\');exit\"".format(
-            self.basedir, suffix)
+            self.basedir, suffix) #code to realign everything, moves the origin to the middle 
         self.process = self.prefix + "process_files_cox(\'_{}\');exit\"".format(
-            suffix)
+            suffix) #processes the files, goes through all the steps 
         self.parcellate = self.prefix + "batch_mrionly_job(\'_{}\');exit\"".format(
-            suffix)
+            suffix) #parcellates the nifti files 
 
     def __call__(self):
         os.system(self.realign)
@@ -116,23 +117,23 @@ class ProcessImagesMRIDummy(object):
         self.parcellate = self.prefix + "batch_mrionly_unused_job(\'_{}\');exit\"".format(suffix)
         self.parcellate_errors = self.prefix + "batch_mrionly_job_errors(\'_{}\');exit\"".format(suffix)
 
-    def move_nii(self):
+    def move_nii(self): #moves the nifti files to where they need to be 
         orig_dir = self.basedir + 'ADNI_MRI_nii_recenter_' + self.suffix + '/'
         new_dir = self.basedir + 'ADNI_MRI_nii_recenter_NL_' + self.suffix
         os.makedirs(new_dir, exist_ok=True)
         dat = pd.read_csv('metadata/data_processed/merged_dataframe_unused_cox_pruned.csv', dtype={'RID': str})
         for _, row in dat.iterrows():
             if row.DX == 'NL':
-                os.system(f'rsync -v {orig_dir}{row.FILE_CODE}.nii {new_dir}/')
+                os.system(f'rsync -v {orig_dir}{row.FILE_CODE}.nii {new_dir}/') #this moves the files to the correct location 
     
     def process_errors(self):
-        os.system(self.parcellate_errors)
+        os.system(self.parcellate_errors) #this catches the errors 
 
-    def __call__(self):
-        os.system(self.realign)
-        os.system(self.process)
-        self.move_nii()
-        os.system(self.parcellate)
+    def __call__(self): #when you call these classes it will: 
+        os.system(self.realign) #realign nifti files  
+        os.system(self.process) #process nifti files  
+        self.move_nii() #move nifit files 
+        os.system(self.parcellate) #parcellate nifti files 
 
 class ProcessImagesMRINacc(object):
     def __init__(self, suffix='cox_test'):
