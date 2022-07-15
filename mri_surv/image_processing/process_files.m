@@ -125,6 +125,8 @@ matlabbatch{3}.spm.spatial.normalise.write.woptions.bb = [NaN NaN NaN
 matlabbatch{3}.spm.spatial.normalise.write.woptions.vox = [1.5 1.5 1.5];
 matlabbatch{3}.spm.spatial.normalise.write.woptions.interp = 4; #interpolate to get things into 1.5 voxels
 matlabbatch{3}.spm.spatial.normalise.write.woptions.prefix = 'w';
+#these next lines are doing calculations that mask everything 
+#looks complicated because this is the vernacular that spm spits out 
 matlabbatch{4}.spm.util.imcalc.input(1) = cfg_dep('Segment: wc1 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{1}, '.','wc', '()',{':'}));
 matlabbatch{4}.spm.util.imcalc.input(2) = cfg_dep('Segment: wc2 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{2}, '.','wc', '()',{':'}));
 matlabbatch{4}.spm.util.imcalc.input(3) = cfg_dep('Segment: wc3 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{3}, '.','wc', '()',{':'}));
@@ -159,6 +161,10 @@ matlabbatch{6}.spm.util.imcalc.options.interp = 1;
 matlabbatch{6}.spm.util.imcalc.options.dtype = 64;
 end
 
+#if you script it 
+#do one, corgeister, then apply transformations to pet scan 
+
+#ask if I need to uncomment these lines 
 % function matlabbatch = batch_process_fdg(rid, suffix)
 % matlabbatch{1}.spm.spatial.coreg.estimate.ref = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_FDG_nii_recenter' suffix '/' rid '_fdg.nii,1']};
 % matlabbatch{1}.spm.spatial.coreg.estimate.source = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix '/' rid '_mri.nii,1']};
