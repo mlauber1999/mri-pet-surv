@@ -1,5 +1,5 @@
-#this allows you to batch process mnris
-#mike looked at gray matter volumes, which corresponded to each brain region 
+%this allows you to batch process mnris
+%mike looked at gray matter volumes, which corresponded to each brain region 
 function batch_mrionly_job(suffix)
     addpath(genpath('/home/mfromano/spm/spm12/'));
     BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
@@ -8,17 +8,17 @@ function batch_mrionly_job(suffix)
     fnames = dir(MRI_folder_new);
     fnames = {fnames.name};
     maxNumCompThreads = 1;
-    spm('defaults', 'PET'); #
+    spm('defaults', 'PET'); 
     spm_jobman('initcfg');
     rand('state',10);
     modal = 'mri';
     newdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recentered_cat12' suffix];
-    mkdir(newdir); #makes new directory to put the mris in 
-    system(['rsync -av ' MRI_folder_new  '*' modal '.nii ' newdir filesep]); #moves MRIs you just recentered into a new folder 
+    mkdir(newdir); %makes new directory to put the mris in 
+    system(['rsync -av ' MRI_folder_new  '*' modal '.nii ' newdir filesep]); %moves MRIs you just recentered into a new folder 
     disp(['rsync -av ' MRI_folder_new  '*' modal '.nii ' newdir filesep])
-    #takes a list of mris and processes them in optimized chunks 
-    #this is in cat12, takes the raw images, recenters them first and then runs them through cat12
-    #most of these are the default options, only ones you might want to adjust are the ROIs
+    %takes a list of mris and processes them in optimized chunks 
+    %this is in cat12, takes the raw images, recenters them first and then runs them through cat12
+    %most of these are the default options, only ones you might want to adjust are the ROIs
     matlabbatch{1}.cfg_basicio.file_dir.file_ops.file_fplist.dir = {newdir};
     matlabbatch{1}.cfg_basicio.file_dir.file_ops.file_fplist.filter = '^[0-9]{4}_mri.nii$';
     matlabbatch{1}.cfg_basicio.file_dir.file_ops.file_fplist.rec = 'FPList';
@@ -60,11 +60,11 @@ function batch_mrionly_job(suffix)
     matlabbatch{2}.spm.tools.cat.estwrite.extopts.admin.verb = 2;
     matlabbatch{2}.spm.tools.cat.estwrite.extopts.admin.print = 2;
     matlabbatch{2}.spm.tools.cat.estwrite.output.surface = 1;
-    matlabbatch{2}.spm.tools.cat.estwrite.output.surf_measures = 1; #surface atlas, not as good as freesurfer but runs faster 
-    #can play around with different ROIs
-    #the lines represent different atlases you can use 
-    matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.neuromorphometrics = 1; #used this one, because its set to 1 not 0 
-    matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.lpba40 = 1; #this ones good 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.surf_measures = 1; %surface atlas, not as good as freesurfer but runs faster 
+    %can play around with different ROIs
+    %the lines represent different atlases you can use 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.neuromorphometrics = 1; %used this one, because its set to 1 not 0 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.lpba40 = 1; %this ones good 
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.cobra = 1;
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.hammers = 1;
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.ibsr = 0;
@@ -77,17 +77,17 @@ function batch_mrionly_job(suffix)
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.Schaefer2018_400Parcels_17Networks_order = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.Schaefer2018_600Parcels_17Networks_order = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.ROImenu.atlases.ownatlas = {''};
-    #mike's abstract looked at GM, but could look at others depending on question asking 
-    matlabbatch{2}.spm.tools.cat.estwrite.output.GM.native = 0; #native space is the intial space the image was in 
-    matlabbatch{2}.spm.tools.cat.estwrite.output.GM.warped = 1; #it ouputs GM, .warped means it's been registered to the MNI space, ie warped 
+    %mike's abstract looked at GM, but could look at others depending on question asking 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.GM.native = 0; %native space is the intial space the image was in 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.GM.warped = 1; %it ouputs GM, .warped means it's been registered to the MNI space, ie warped 
     matlabbatch{2}.spm.tools.cat.estwrite.output.GM.mod = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.GM.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.WM.native = 0;
-    matlabbatch{2}.spm.tools.cat.estwrite.output.WM.warped = 1; #it ouputs WM 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.WM.warped = 1; %it ouputs WM 
     matlabbatch{2}.spm.tools.cat.estwrite.output.WM.mod = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.WM.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.CSF.native = 0; 
-    matlabbatch{2}.spm.tools.cat.estwrite.output.CSF.warped = 1; #it ouputs CSF 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.CSF.warped = 1; %it ouputs CSF 
     matlabbatch{2}.spm.tools.cat.estwrite.output.CSF.mod = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.CSF.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.ct.native = 0;
@@ -105,13 +105,13 @@ function batch_mrionly_job(suffix)
     matlabbatch{2}.spm.tools.cat.estwrite.output.SL.mod = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.SL.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.TPMC.native = 0;
-    matlabbatch{2}.spm.tools.cat.estwrite.output.TPMC.warped = 1; #set to 1 if you want it, 0 if not 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.TPMC.warped = 1; %set to 1 if you want it, 0 if not 
     matlabbatch{2}.spm.tools.cat.estwrite.output.TPMC.mod = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.TPMC.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.atlas.native = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.atlas.warped = 1;
     matlabbatch{2}.spm.tools.cat.estwrite.output.atlas.dartel = 0;
-    matlabbatch{2}.spm.tools.cat.estwrite.output.label.native = 1; #.label represents the labels for the atlases 
+    matlabbatch{2}.spm.tools.cat.estwrite.output.label.native = 1; % .label represents the labels for the atlases 
     matlabbatch{2}.spm.tools.cat.estwrite.output.label.warped = 1;
     matlabbatch{2}.spm.tools.cat.estwrite.output.label.dartel = 0;
     matlabbatch{2}.spm.tools.cat.estwrite.output.labelnative = 1;
@@ -124,9 +124,9 @@ function batch_mrionly_job(suffix)
     matlabbatch{2}.spm.tools.cat.estwrite.output.jacobianwarped = 1;
     matlabbatch{2}.spm.tools.cat.estwrite.output.warps = [1 1];
     matlabbatch{2}.spm.tools.cat.estwrite.output.rmat = 1;
-    cat12('expert') #expert mode allows you to specify extra things you can use 
-    jobs = matlabbatch; #specifies its a matlab batch job 
+    cat12('expert') %expert mode allows you to specify extra things you can use 
+    jobs = matlabbatch; %specifies its a matlab batch job 
     spm('defaults', 'PET');
-    spm_jobman('initcfg'); #automatically populates 
-    spm_jobman('run_nogui', jobs); #tells it to run without a gui 
+    spm_jobman('initcfg'); %automatically populates 
+    spm_jobman('run_nogui', jobs); %tells it to run without a gui 
 end
