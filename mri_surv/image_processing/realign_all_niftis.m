@@ -8,7 +8,7 @@ if nargin < 2
     suffix = '';
 end
 
-MRI_folder_init = ['/data2/MRI_PET_DATA/raw_data/MRI_nii' suffix filesep]; #goes through this folder 
+MRI_folder_init = ['/data2/MRI_PET_DATA/raw_data/MRI_nii' suffix filesep]; %goes through this folder 
 fnames = dir(MRI_folder_init); 
 fnames = {fnames.name};
 rids = arrayfun(@(x) regexp(x,'^([0-9]{4}).*\.nii$','tokens'), fnames, 'uniformoutput', false);
