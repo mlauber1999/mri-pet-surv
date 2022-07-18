@@ -19,7 +19,7 @@ rids_mri = [rids{:}];
 rids = rids_mri;
 
 MRI_folder_new = [outputfolder '/ADNI_MRI_nii_recenter' suffix];
-#moves the niftis to this new folder after realigning them 
+% moves the niftis to this new folder after realigning them 
 
 if ~exist(outputfolder,'dir')
     mkdir(outputfolder)
