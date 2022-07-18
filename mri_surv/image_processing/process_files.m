@@ -52,21 +52,21 @@ end
 % cfg_basicio BasicIO - Unknown
 %-----------------------------------------------------------------------
 function matlabbatch = batch_process_amyloidmri(rid, suffix) 
-#coregistration steps: 
-#you either have mri or pet as a template, doesn't matter which is the template, just that you coregister one with the other 
-#mike thinks he used pet as template and coregistered mri to pet 
-#get rigid cooridates from that 
-#after coregistration you normalize the MRI and you get deformation field from that is a 4d array of splines 
-#apply splines to mri to map it to the space
-#also does a bias correction to get rid of low frequency inhomogeneties in mri 
-#output is a normalized mri in the mni space 
-#at that point, apply the deformation field to the pet scan 
-#this brings pet scan into mri space, achieving coregistration 
-#before pet scans are downloaded there have already been 4 processing steps performed in ADNI
+%coregistration steps: 
+%you either have mri or pet as a template, doesn't matter which is the template, just that you coregister one with the other 
+%mike thinks he used pet as template and coregistered mri to pet 
+%get rigid cooridates from that 
+%after coregistration you normalize the MRI and you get deformation field from that is a 4d array of splines 
+%apply splines to mri to map it to the space
+%also does a bias correction to get rid of low frequency inhomogeneties in mri 
+%output is a normalized mri in the mni space 
+%at that point, apply the deformation field to the pet scan 
+%this brings pet scan into mri space, achieving coregistration 
+%before pet scans are downloaded there have already been 4 processing steps performed in ADNI
 
-#the reference image is the pet amyloid scan 
+%the reference image is the pet amyloid scan 
 matlabbatch{1}.spm.spatial.coreg.estimate.ref = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_AMYLOID_nii_recenter' suffix '/' rid '_amyloid.nii,1']};
-#the source image is the mri 
+%the source image is the mri 
 matlabbatch{1}.spm.spatial.coreg.estimate.source = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix '/' rid '_mri.nii,1']};
 matlabbatch{1}.spm.spatial.coreg.estimate.other = {''};
 matlabbatch{1}.spm.spatial.coreg.estimate.eoptions.cost_fun = 'nmi';
@@ -111,29 +111,29 @@ matlabbatch{2}.spm.spatial.preproc.warp.write = [1 1];
 matlabbatch{2}.spm.spatial.preproc.warp.vox = NaN;
 matlabbatch{2}.spm.spatial.preproc.warp.bb = [NaN NaN NaN
                                               NaN NaN NaN];
-#mike put the pet scan as the standard space and transformed the mri to that and then applied ut 
+%mike put the pet scan as the standard space and transformed the mri to that and then applied ut 
 matlabbatch{3}.spm.spatial.normalise.write.subj(1).def(1) = cfg_dep('Segment: Forward Deformations', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','fordef', '()',{':'}));
 matlabbatch{3}.spm.spatial.normalise.write.subj(1).resample(1) = cfg_dep('Segment: Bias Corrected (1)', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','channel', '()',{1}, '.','biascorr', '()',{':'}));
-#for subject 2 all he did was apply the forward transformations to it 
+%for subject 2 all he did was apply the forward transformations to it 
 matlabbatch{3}.spm.spatial.normalise.write.subj(2).def(1) = cfg_dep('Segment: Forward Deformations', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','fordef', '()',{':'}));
-#then he resampled it
-#resampling step, all the metadata gets scrambled
+%then he resampled it
+%resampling step, all the metadata gets scrambled
 matlabbatch{3}.spm.spatial.normalise.write.subj(2).resample = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_AMYLOID_nii_recenter' suffix '/' rid '_amyloid.nii,1']};
 matlabbatch{3}.spm.spatial.normalise.write.woptions.bb = [NaN NaN NaN
                                                           NaN NaN NaN];
-#this resampling gives it uniform voxels 
+%this resampling gives it uniform voxels 
 matlabbatch{3}.spm.spatial.normalise.write.woptions.vox = [1.5 1.5 1.5];
-matlabbatch{3}.spm.spatial.normalise.write.woptions.interp = 4; #interpolate to get things into 1.5 voxels
+matlabbatch{3}.spm.spatial.normalise.write.woptions.interp = 4; %interpolate to get things into 1.5 voxels
 matlabbatch{3}.spm.spatial.normalise.write.woptions.prefix = 'w';
-#these next lines are doing calculations that mask everything 
-#looks complicated because this is the vernacular that spm spits out 
+%these next lines are doing calculations that mask everything 
+%looks complicated because this is the vernacular that spm spits out 
 matlabbatch{4}.spm.util.imcalc.input(1) = cfg_dep('Segment: wc1 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{1}, '.','wc', '()',{':'}));
 matlabbatch{4}.spm.util.imcalc.input(2) = cfg_dep('Segment: wc2 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{2}, '.','wc', '()',{':'}));
 matlabbatch{4}.spm.util.imcalc.input(3) = cfg_dep('Segment: wc3 Images', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','tiss', '()',{3}, '.','wc', '()',{':'}));
 matlabbatch{4}.spm.util.imcalc.output = [rid '_brainmask_amyloidmri'];
 matlabbatch{4}.spm.util.imcalc.outdir = {''};
-matlabbatch{4}.spm.util.imcalc.expression = '(i1+i2+i3) > .1'; #gives you the probability of it being wm in this region
-#i1+i2+i3 is adding the gm, wm, and csf masks and if at any voxel its >.1, keep it as a mask 
+matlabbatch{4}.spm.util.imcalc.expression = '(i1+i2+i3) > .1'; %gives you the probability of it being wm in this region
+%i1+i2+i3 is adding the gm, wm, and csf masks and if at any voxel its >.1, keep it as a mask 
 matlabbatch{4}.spm.util.imcalc.var = struct('name', {}, 'value', {});
 matlabbatch{4}.spm.util.imcalc.options.dmtx = 0;
 matlabbatch{4}.spm.util.imcalc.options.mask = 0;
@@ -143,7 +143,7 @@ matlabbatch{5}.spm.util.imcalc.input(1) = cfg_dep('Normalise: Write: Normalised 
 matlabbatch{5}.spm.util.imcalc.input(2) = cfg_dep('Image Calculator: ImCalc Computed Image: brainmask_amyloidmri', substruct('.','val', '{}',{4}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','files'));
 matlabbatch{5}.spm.util.imcalc.output = [rid '_brain_mri'];
 matlabbatch{5}.spm.util.imcalc.outdir = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/brain_stripped' suffix '/']};
-matlabbatch{5}.spm.util.imcalc.expression = 'i1.*i2'; #apply a mask to the mri 
+matlabbatch{5}.spm.util.imcalc.expression = 'i1.*i2'; %apply a mask to the mri 
 matlabbatch{5}.spm.util.imcalc.var = struct('name', {}, 'value', {});
 matlabbatch{5}.spm.util.imcalc.options.dmtx = 0;
 matlabbatch{5}.spm.util.imcalc.options.mask = 0;
@@ -153,7 +153,7 @@ matlabbatch{6}.spm.util.imcalc.input(1) = cfg_dep('Normalise: Write: Normalised 
 matlabbatch{6}.spm.util.imcalc.input(2) = cfg_dep('Image Calculator: ImCalc Computed Image: brainmask_amyloidmri', substruct('.','val', '{}',{4}, '.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','files'));
 matlabbatch{6}.spm.util.imcalc.output = [rid '_brain_amyloid'];
 matlabbatch{6}.spm.util.imcalc.outdir = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/brain_stripped' suffix '/']};
-matlabbatch{6}.spm.util.imcalc.expression = 'i1.*i2'; #applys the mask to the pet scan
+matlabbatch{6}.spm.util.imcalc.expression = 'i1.*i2'; %applys the mask to the pet scan
 matlabbatch{6}.spm.util.imcalc.var = struct('name', {}, 'value', {}); 
 matlabbatch{6}.spm.util.imcalc.options.dmtx = 0;
 matlabbatch{6}.spm.util.imcalc.options.mask = 0;
@@ -161,10 +161,10 @@ matlabbatch{6}.spm.util.imcalc.options.interp = 1;
 matlabbatch{6}.spm.util.imcalc.options.dtype = 64;
 end
 
-#if you script it 
-#do one, corgeister, then apply transformations to pet scan 
+%if you script it 
+%do one, corgeister, then apply transformations to pet scan 
 
-#ask if I need to uncomment these lines 
+%ask if I need to uncomment these lines 
 % function matlabbatch = batch_process_fdg(rid, suffix)
 % matlabbatch{1}.spm.spatial.coreg.estimate.ref = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_FDG_nii_recenter' suffix '/' rid '_fdg.nii,1']};
 % matlabbatch{1}.spm.spatial.coreg.estimate.source = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix '/' rid '_mri.nii,1']};
