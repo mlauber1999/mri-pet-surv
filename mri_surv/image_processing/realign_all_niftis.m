@@ -1,4 +1,4 @@
-#script to move niftis to a new folder once they are realigned
+%script to move niftis to a new folder once they are realigned
 function rids = realign_all_niftis(outputfolder, suffix)
 %% main
 if nargin < 1
