@@ -1,29 +1,60 @@
 function process_files(suffix)
-addpath(genpath('/home/mfromano/spm/spm12/'));
+addpath(genpath('/home/mfromano/spm/spm12/')); %this generates a folder named /home/mfromano/spm/spm12/ and adds it to the search path 
 BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
+%this creates a 1 row by 3 column array named BASE_DIR with the file path data2.. being the first value, suffix being the middle value, and filesep being the last value 
 MRI_folder_new = [BASE_DIR 'ADNI_MRI_nii_recenter' suffix filesep];
+%this creates a 1 row by 4 column array named MRI_folder_new with Base_dir being the first value, suffix being the middle value, and filesep being the last value 
 
 fnames = dir(MRI_folder_new);
+%defining the filenames as all files in the directory where MRI_folders_new is 
+%when you use dir you get .name for name of the file 
 fnames = {fnames.name};
+%redefine fnames as the name of each file in folder
 rids = arrayfun(@(x) regexp(x,'^([0-9]{4}).*\.nii$','tokens'), fnames, 'uniformoutput', false);
+%regex tells it to match x with the specified conditions (0-9), 4 digits long, ending in .nii, fnames is the names of all the files within the directory mri_folder_new
 rids = [rids{:}];
+%creating a matrix of the rids, taking specific data types {:} 
+%rids variable is now equal to all of the rids 
+%{:}  means take all contents of a cell array 
 rids = [rids{:}];
+%redefining rids 
 rids = [rids{:}];
+%redefining rids 
 mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
+%makes a new directory consisting of a 1x4 array, where the first value is /data2..filepath, the second is suffix, the third is Adni_mri filepath, and the fourth is suffix.
+%I dont think thats exactly right though 
 mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix]);
+%not sure exactly what this is doing 
+
 rand('state',10);
+%older form of uniform random number generator, rand('state',10) for the integer 10 initalizes the generator to the 10th integer state 
 maxNumCompThreads = 1;
+%sets the current maximum number of computational threads to 1 
+
 spm('defaults', 'PET');
+%tells sprm to do the default settings for pet scans? 
+
 spm_jobman('initcfg');
+%command that allows you to batch process spm through the command line 
 parpool(14);
-parfor i=1:length(rids)
-        rand('state',10);
+%this creates a paralell pool of workers using the default cluster, parameter is poolsize (number of workers) in this case 14 
+
+%executes for loop iterations in parallel on workers 
+parfor i=1:length(rids) %specifies it should iterate through all the elements in rids 
+        rand('state',10); %initalizes the generator to the 10th integer state 
         curr_mri = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
-        disp(['copying ' rids{i}])
+        %creates an array named curr_mri in the filepath /data2.. with suffix /adni_mri_nii_recenter with the rids id number and ending in suffix _mri.nii 
+        disp(['copying ' rids{i}]) %prints copying the rids number in the command line 
         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
+        %system tells it to interact with the os 
+        %rysnc is copying and syncing data from one computer to another 
+        %rsync -a means archive, syncs directories recursively, preserve symbolic links, modification times, groups, ownership, and permission
+        %rsync -v means verbose, means it gives you information about the files being transferred and gives summary at the end 
 %         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix filesep]);
         jobs = batch_process_amyloidmri(rids{i}, suffix);
+        %creates variable jobs as calling the function batch_process_amyloid_mri and include the suffix 
         spm_jobman('run_nogui', jobs);
+        %tells spm to run without the gui on jobs (to batch process the amyloid mri) 
 end
 % 
 % spm('defaults', 'PET');
@@ -37,7 +68,8 @@ end
 
 % modality = {'amyloid','mri','fdg'};
 modality = {'amyloid','mri'};
-for i=1:length(modality)
+%creates variable to specify the modlaities are amyloid and mri 
+for i=1:length(modality) %for loop to run the 
 modal = modality{i};
 cdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped_' modal suffix];
 mkdir(cdir);
