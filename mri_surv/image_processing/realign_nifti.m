@@ -1,3 +1,4 @@
+%I don't think I have to change any filepath stuff on this 
 %this script realigns all nifti files
 %version 1 of this in zip file for Mike's abstract, download v1 file, should have everything in place for pet coregistration 
 function fnames = realign_nifti(raw_nifti_folder, folder_name, rid_list, modality)
