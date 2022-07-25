@@ -2,6 +2,7 @@
 function rids = realign_all_niftis(outputfolder, suffix)
 %defining a function named realign_all_nifits with input parameters outputfolder and suffix and output parameter rids 
 %maybe rids might be realigned ids 
+%the input is the rIDs, but where are they stored? Do I have to be in the same folder as them 
 
 %% main
 if nargin < 1
