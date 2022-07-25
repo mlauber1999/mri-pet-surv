@@ -1,7 +1,11 @@
 function process_files(suffix)
 addpath(genpath('/home/mfromano/spm/spm12/')); %this generates a folder named /home/mfromano/spm/spm12/ and adds it to the search path 
+%do I need to create a new path for my folder or will this work? 
+
+%I think I would change the directroy to BASE_DIR = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep];
 BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
 %this creates a 1 row by 3 column array named BASE_DIR with the file path data2.. being the first value, suffix being the middle value, and filesep being the last value 
+
 MRI_folder_new = [BASE_DIR 'ADNI_MRI_nii_recenter' suffix filesep];
 %this creates a 1 row by 4 column array named MRI_folder_new with Base_dir being the first value, suffix being the middle value, and filesep being the last value 
 
@@ -21,8 +25,11 @@ rids = [rids{:}];
 rids = [rids{:}];
 %redefining rids 
 mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
+%I think I would change it to mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
 %makes a new directory consisting of a 1x4 array, where the first value is /data2..filepath, the second is suffix, the third is Adni_mri filepath, and the fourth is suffix.
 %I dont think thats exactly right though 
+
+%I think I would change this to mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix]);
 mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix]);
 %not sure exactly what this is doing 
 
@@ -43,14 +50,17 @@ parpool(14);
 parfor i=1:length(rids) %specifies it should iterate through all the elements in rids 
         rand('state',10); %initalizes the generator to the 10th integer state 
         curr_mri = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
+        % I think I would change this to  curr_mri = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
         %creates an array named curr_mri in the filepath /data2.. with suffix /adni_mri_nii_recenter with the rids id number and ending in suffix _mri.nii 
         disp(['copying ' rids{i}]) %prints copying the rids number in the command line 
         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
+        %I think I would change this to system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
         %system tells it to interact with the os 
         %rysnc is copying and syncing data from one computer to another 
         %rsync -a means archive, syncs directories recursively, preserve symbolic links, modification times, groups, ownership, and permission
         %rsync -v means verbose, means it gives you information about the files being transferred and gives summary at the end 
 %         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix filesep]);
+%change this to include ML in filepath 
         jobs = batch_process_amyloidmri(rids{i}, suffix);
         %creates variable jobs as calling the function batch_process_amyloid_mri and include the suffix 
         spm_jobman('run_nogui', jobs);
@@ -72,9 +82,12 @@ modality = {'amyloid','mri'};
 for i=1:length(modality) %for loop to run the 
 modal = modality{i};
 cdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped_' modal suffix];
+%change this to include ML in filepath 
 mkdir(cdir);
 system(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep]);
+%change this to include ML in filepath 
 disp(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep])
+%change this to include ML in filepath 
 end
 
 end
