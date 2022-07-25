@@ -8,7 +8,9 @@ function rids = realign_all_niftis(outputfolder, suffix)
 if nargin < 1
 %nargin is number of function input arguments 
 %if the number of inputs is less than one, the output folder is /data2/....
+    
     outputfolder = '/data2/MRI_PET_DATA/processed_images_final';
+    % I think I would change to outputfolder = '/data2/MRI_PET_DATA/ML/processed_images_final';
 end
 %if nargin is less than 2, add suffix '', meaning defining an empty string so that when you call the function and specify a suffix, that gets added 
 %second condition usually over rides first 
@@ -20,7 +22,11 @@ end
 %defining variable of initialized mri folder, that is equal to path /data2... 
 %in matlab comma and a space mean the same thing in brackets 
 %3 parameters in this brackets, the string filename, the suffix, 
+
+
 MRI_folder_init = ['/data2/MRI_PET_DATA/raw_data/MRI_nii' suffix filesep]; %goes through this folder 
+%I think I would change this to MRI_folder_init = ['/data2/MRI_PET_DATA/ML/raw_data/MRI_nii' suffix filesep];
+
 fnames = dir(MRI_folder_init); 
 %defining variable fnames as all files in that directory 
 %when you use dir you get .name for name of the file 
@@ -43,8 +49,11 @@ rids_mri = [rids{:}];
 
 rids = rids_mri;
 
+%would I change this to 
 MRI_folder_new = [outputfolder '/ADNI_MRI_nii_recenter' suffix];
-% moves the niftis to this new folder after realigning them 
+%if im in my ML folder, don't need to respecify path name since it will create a new folder within ML by running this, but if I'm running it from the server I do need to give the absolute path 
+
+% moves the niftis to this new /data2/MRI_PET_DATA/processed_images_final_2yr/ADNI_MRI_nii_recenter folder after realigning them 
 
 
 if ~exist(outputfolder,'dir')
