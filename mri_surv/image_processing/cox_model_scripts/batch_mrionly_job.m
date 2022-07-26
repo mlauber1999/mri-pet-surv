@@ -3,8 +3,10 @@
 function batch_mrionly_job(suffix)
     addpath(genpath('/home/mfromano/spm/spm12/'));
     %do I need to change this? Or can I call spm from Mike's folder 
-    BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
-    %I think I would change this to /data2/MRI_PET_DATA/ML/processed_images_final
+    %original: 
+    %BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
+    %changed to: 
+    BASE_DIR = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep];
     MRI_folder_new = [BASE_DIR 'ADNI_MRI_nii_recenter' suffix filesep];
 
     fnames = dir(MRI_folder_new);
@@ -14,8 +16,11 @@ function batch_mrionly_job(suffix)
     spm_jobman('initcfg');
     rand('state',10);
     modal = 'mri';
-    newdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recentered_cat12' suffix];
-    %I think I would change this to /data2/MRI_PET_DATA/ML/processed_images_final
+    %original: 
+    %newdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recentered_cat12' suffix];
+    %changed this to:
+    newdir = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recentered_cat12' suffix];
+    
     mkdir(newdir); %makes new directory to put the mris in 
     system(['rsync -av ' MRI_folder_new  '*' modal '.nii ' newdir filesep]); %moves MRIs you just recentered into a new folder 
     disp(['rsync -av ' MRI_folder_new  '*' modal '.nii ' newdir filesep])
