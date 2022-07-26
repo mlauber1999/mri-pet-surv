@@ -2,8 +2,10 @@ function process_files(suffix)
 addpath(genpath('/home/mfromano/spm/spm12/')); %this generates a folder named /home/mfromano/spm/spm12/ and adds it to the search path 
 %do I need to create a new path for my folder or will this work? 
 
-%I think I would change the directroy to BASE_DIR = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep];
-BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
+%Orgininal:
+%BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
+%changed to:
+BASE_DIR = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep];
 %this creates a 1 row by 3 column array named BASE_DIR with the file path data2.. being the first value, suffix being the middle value, and filesep being the last value 
 
 MRI_folder_new = [BASE_DIR 'ADNI_MRI_nii_recenter' suffix filesep];
@@ -24,13 +26,18 @@ rids = [rids{:}];
 %redefining rids 
 rids = [rids{:}];
 %redefining rids 
-mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
-%I think I would change it to mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
+%original: 
+%mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
+%changed to: 
+mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);\
+
 %makes a new directory consisting of a 1x4 array, where the first value is /data2..filepath, the second is suffix, the third is Adni_mri filepath, and the fourth is suffix.
 %I dont think thats exactly right though 
 
-%I think I would change this to mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix]);
+%Original: 
 mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix]);
+%changed to: 
+mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix]);
 %not sure exactly what this is doing 
 
 rand('state',10);
@@ -49,12 +56,15 @@ parpool(14);
 %executes for loop iterations in parallel on workers 
 parfor i=1:length(rids) %specifies it should iterate through all the elements in rids 
         rand('state',10); %initalizes the generator to the 10th integer state 
-        curr_mri = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
-        % I think I would change this to  curr_mri = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
+        %original: 
+        %curr_mri = ['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
+        %changed to: 
+        curr_mri = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter' suffix filesep rids{i} '_mri.nii'];
         %creates an array named curr_mri in the filepath /data2.. with suffix /adni_mri_nii_recenter with the rids id number and ending in suffix _mri.nii 
         disp(['copying ' rids{i}]) %prints copying the rids number in the command line 
-        system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
-        %I think I would change this to system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
+        %original:
+        %system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
+        system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
         %system tells it to interact with the os 
         %rysnc is copying and syncing data from one computer to another 
         %rsync -a means archive, syncs directories recursively, preserve symbolic links, modification times, groups, ownership, and permission
