@@ -64,12 +64,13 @@ parfor i=1:length(rids) %specifies it should iterate through all the elements in
         disp(['copying ' rids{i}]) %prints copying the rids number in the command line 
         %original:
         %system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
+        %changed to:
         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/ML/processed_images_final' suffix '/ADNI_MRI_nii_recenter_amyloid' suffix]);
         %system tells it to interact with the os 
         %rysnc is copying and syncing data from one computer to another 
         %rsync -a means archive, syncs directories recursively, preserve symbolic links, modification times, groups, ownership, and permission
         %rsync -v means verbose, means it gives you information about the files being transferred and gives summary at the end 
-%         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix filesep]);
+        %system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix filesep]);
 %I think the above line is commented out bc were not doing the fdg pet, uncomment it if I do  
         jobs = batch_process_amyloidmri(rids{i}, suffix);
         %creates variable jobs as calling the function batch_process_amyloid_mri and include the suffix 
