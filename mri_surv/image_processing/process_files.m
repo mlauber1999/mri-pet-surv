@@ -35,7 +35,7 @@ mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_
 %I dont think thats exactly right though 
 
 %Original: 
-mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix]);
+%mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix]);
 %changed to: 
 mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix]);
 %not sure exactly what this is doing 
@@ -70,7 +70,7 @@ parfor i=1:length(rids) %specifies it should iterate through all the elements in
         %rsync -a means archive, syncs directories recursively, preserve symbolic links, modification times, groups, ownership, and permission
         %rsync -v means verbose, means it gives you information about the files being transferred and gives summary at the end 
 %         system(['rsync -av ' curr_mri ' /data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_MRI_nii_recenter_fdg' suffix filesep]);
-%change this to include ML in filepath 
+%I think the above line is commented out bc were not doing the fdg pet, uncomment it if I do  
         jobs = batch_process_amyloidmri(rids{i}, suffix);
         %creates variable jobs as calling the function batch_process_amyloid_mri and include the suffix 
         spm_jobman('run_nogui', jobs);
@@ -91,13 +91,19 @@ modality = {'amyloid','mri'};
 %creates variable to specify the modlaities are amyloid and mri 
 for i=1:length(modality) %for loop to run the 
 modal = modality{i};
-cdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped_' modal suffix];
-%change this to include ML in filepath 
+%original: 
+%cdir = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped_' modal suffix];
+%changed to:
+cdir = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped_' modal suffix];
 mkdir(cdir);
-system(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep]);
-%change this to include ML in filepath 
-disp(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep])
-%change this to include ML in filepath 
+original: 
+%system(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep]);
+%changed to: 
+system(['rsync -ar /data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep]);
+%original: 
+%disp(['rsync -ar /data2/MRI_PET_DATA/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep])
+%changed to: 
+disp(['rsync -ar /data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'brain_stripped' suffix filesep '*' modal '.nii ' cdir filesep])
 end
 
 end
