@@ -6,6 +6,9 @@ addpath(genpath('/home/mfromano/spm/spm12/')); %this generates a folder named /h
 %BASE_DIR = ['/data2/MRI_PET_DATA/processed_images_final' suffix filesep];
 %changed to:
 BASE_DIR = ['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep];
+%concatenating 3 strings
+%filesep is default, its forward or back slash, suffix is 2yr_
+%
 %this creates a 1 row by 3 column array named BASE_DIR with the file path data2.. being the first value, suffix being the middle value, and filesep being the last value 
 
 MRI_folder_new = [BASE_DIR 'ADNI_MRI_nii_recenter' suffix filesep];
@@ -29,7 +32,7 @@ rids = [rids{:}];
 %original: 
 %mkdir(['/data2/MRI_PET_DATA/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
 %changed to: 
-mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);\
+mkdir(['/data2/MRI_PET_DATA/ML/processed_images_final' suffix filesep 'ADNI_MRI_nii_recenter_amyloid' suffix]);
 
 %makes a new directory consisting of a 1x4 array, where the first value is /data2..filepath, the second is suffix, the third is Adni_mri filepath, and the fourth is suffix.
 %I dont think thats exactly right though 
@@ -125,6 +128,8 @@ function matlabbatch = batch_process_amyloidmri(rid, suffix)
 %at that point, apply the deformation field to the pet scan 
 %this brings pet scan into mri space, achieving coregistration 
 %before pet scans are downloaded there have already been 4 processing steps performed in ADNI
+
+%need tp update these diretories to be ML 
 
 %the reference image is the pet amyloid scan 
 matlabbatch{1}.spm.spatial.coreg.estimate.ref = {['/data2/MRI_PET_DATA/processed_images_final' suffix '/ADNI_AMYLOID_nii_recenter' suffix '/' rid '_amyloid.nii,1']};
