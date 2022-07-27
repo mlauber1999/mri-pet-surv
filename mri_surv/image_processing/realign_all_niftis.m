@@ -27,9 +27,10 @@ end
 %3 parameters in this brackets, the string filename, the suffix, 
 
 %original:
-%MRI_folder_init = ['/data2/MRI_PET_DATA/raw_data/MRI_nii' suffix filesep]; %goes through this folder 
+MRI_folder_init = ['/data2/MRI_PET_DATA/raw_data/MRI_nii' suffix filesep]; %goes through this folder 
 % changed to: 
-MRI_folder_init = ['/data2/MRI_PET_DATA/ML/raw_data/MRI_nii' suffix filesep];
+%MRI_folder_init = ['/data2/MRI_PET_DATA/ML/raw_data/MRI_nii' suffix filesep];
+
 
 fnames = dir(MRI_folder_init); 
 %defining variable fnames as all files in that directory 
