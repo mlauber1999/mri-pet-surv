@@ -1,4 +1,10 @@
 %script to move niftis to a new folder once they are realigned
+addpath(genpath(‘/usr/local/spm’)) 
+addpath(genpath(‘.’))
+
+self.prefix = 'matlab -nodisplay -r \"addpath(genpath(\'.\'));' %matlab line 
+        
+
 function rids = realign_all_niftis(outputfolder, suffix)
 %defining a function named realign_all_nifits with input parameters outputfolder and suffix and output parameter rids 
 %maybe rids might be realigned ids 
